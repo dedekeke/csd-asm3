@@ -1,54 +1,53 @@
 package org.asm;
 
-public class MyQueue<T> {
-    private Node<T> head;
-    private Node<T> tail;
+import java.util.LinkedList;
+
+public class MyQueue {
+    LinkedList list = null;
+    Object object = null;
 
     public MyQueue() {
-        this.head = null;
-        this.tail = null;
     }
+
+    /**
+     * 
+     * Adding new item to queue
+     * @param obj The new item
+     * 
+     */
+
+    public void enqueue(Object obj) {
+    }
+
+    /**
+     * 
+     * Checking if this queue is empty
+     * @return true if queue is empty
+     * 
+     */
 
     public boolean isEmpty() {
-        return head == null;
+        return true;
     }
 
-    public void enqueue(T item) {
-        Node<T> newNode = new Node<>(item, null);
-        if (isEmpty()) {
-            head = newNode;
-            tail = newNode;
-        } else {
-            tail.setNext(newNode);
-            tail = newNode;
-        }
+    /**
+     * 
+     * Removing an item from the queue and return it.
+     * @return The item from the queue, can be null
+     */
+
+    public Object dequeue() {
+        return null;
     }
 
-    public T dequeue() {
-        if (isEmpty()) {
-            return null;
-        }
-        T item = head.getInfo();
-        head = head.getNext();
-        if (head == null) {
-            tail = null;
-        }
-        return item;
-    }
+    /**
+     * 
+     * Returning the front item of the queue
+     * @return The front item
+     * 
+     */
 
-    public void clear() {
-        head = null;
-        tail = null;
-    }
-
-    public void displayAll() {
-        Node<T> current = head;
-        while (current != null) {
-            System.out.println(current.getInfo().toString());
-            current = current.getNext();
-        }
+    public Object front() {
+        return null;
     }
 }
-
-
-

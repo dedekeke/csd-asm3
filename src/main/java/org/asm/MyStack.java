@@ -1,43 +1,44 @@
 package org.asm;
 
+import java.util.LinkedList;
+
 public class MyStack<T> {
-    private Node<T> head;
+    LinkedList list;
 
-
-    public MyStack() {
-        head = null;
+    MyStack() {
+        list = null;
     }
 
-    public void push(T item) {
-        head = new Node<>(item, head);
-    }
-
-    public T pop() {
-        if (isEmpty()) {
-            return null;
-        }
-        T item = head.getInfo();
-        head = head.getNext();
-        return item;
-    }
+    /**
+     * 
+     * Checking if the stack is empty
+     * @return True if the stack is empty
+     * 
+     */
 
     public boolean isEmpty() {
-        return head == null;
+        return true;
     }
 
-    public void clear() {
-        head = null;
+    /**
+     * 
+     * Inserting an item to the stack
+     * @param obj
+     * 
+     */
+
+    void push(Object obj) {
+
     }
 
-    public void displayAll() {
-        Node<T> current = head;
-        System.out.println("ID | Title | Quantity | Price");
-        System.out.println("--------------------------------");
-        while (current != null) {
-            System.out.println(current);
-            current = current.getNext();
-        }
+    /**
+     * 
+     * Removing an item from the stack and return it.
+     * @return
+     * 
+     */
+
+    Object pop() {
+        return null;
     }
 }
-
-

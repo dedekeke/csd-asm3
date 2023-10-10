@@ -1,36 +1,39 @@
 package org.asm;
 
-public class Node<T> {
-    private T info;
-    private Node<T> next;
+public class Node {
+    private Person info;
+    private Node left;
+    private Node right;
 
     public Node() {
     }
 
-    public Node(T info, Node<T> next) {
+    public Node(Person info) {
         this.info = info;
-        this.next = next;
     }
 
-    public T getInfo() {
+    public Person getInfo() {
         return info;
     }
 
-    public void setInfo(T info) {
+    public void setInfo(Person info) {
         this.info = info;
     }
 
-    public Node<T> getNext() {
-        return next;
+    public Node getLeft() {
+        return left;
     }
 
-    public void setNext(Node<T> next) {
-        this.next = next;
+    public void setLeft(Node left) {
+        this.left = left;
     }
 
-    @Override
-    public String toString() {
-        return info.toString();
+    public Node getRight() {
+        return right;
+    }
+
+    public void setRight(Node right) {
+        this.right = right;
     }
 }
 
