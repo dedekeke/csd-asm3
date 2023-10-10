@@ -43,7 +43,7 @@ public class Main {
                 case 6 -> System.out.println(6);
                 case 7 -> System.out.println("Product list sorted successfully!");
 
-                case 8 -> System.out.println("Current number: " + n + " to binary: " + result);
+                case 8 -> System.out.println("Current number: to binary: " );
 
                 case 0 -> System.out.println("Exiting...");
                 default -> System.out.println("Invalid choice. Please try again.");
