@@ -7,13 +7,17 @@ public class MyPerson {
         tree = new MyBSTree();
     }
 
-    public void insert() {}
+    public void insert(Person person) {
+        tree.insert(person);
+    }
 
     public void inOrder() {}
 
     public void bst() {}
 
-    public void search() {}
+    public Person search(int id) {
+        return tree.search(tree.root, String.valueOf(id)).getInfo();
+    }
 
     public void delete() {}
 

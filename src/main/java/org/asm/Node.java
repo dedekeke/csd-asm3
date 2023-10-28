@@ -10,6 +10,7 @@ public class Node {
 
     public Node(Person info) {
         this.info = info;
+        left = right = null;
     }
 
     public Person getInfo() {
