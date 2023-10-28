@@ -3,7 +3,6 @@ package org.asm;
 import java.util.Scanner;
 
 public class Main {
-
     public static void showMenu() {
         System.out.println("\n---------------------------------------------------");
         System.out.println("Choose one of this options:");
@@ -19,10 +18,9 @@ public class Main {
         System.out.println("0. Exit");
         System.out.println("---------------------------------------------------");
     }
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        OperationToProduct operationToProduct = new OperationToProduct();
+        MyPerson person = new MyPerson();
 
         int choice;
 
