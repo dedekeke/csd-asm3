@@ -19,13 +19,13 @@ public class MyBSTree {
             return;
 
         // First recur on left child
-        inOrder(node.getLeft());
+        inOrder(node.left);
 
         // Then print the data of node
-        System.out.print(node.getInfo() + " ");
+        System.out.print(node.info + " ");
 
         // Now recur on right child
-        inOrder(node.getRight());
+        inOrder(node.right);
     }
 
     public int count(Node node) { return 1; }
@@ -34,10 +34,10 @@ public class MyBSTree {
 
     public void insert(Person person) {
         if (root == null) root = new Node(person);
-        else if (Integer.parseInt(person.ID()) < Integer.parseInt(root.getInfo().ID())) {
-            root.setLeft(new Node(person));
-        } else if (Integer.parseInt(person.ID()) > Integer.parseInt(root.getInfo().ID())) {
-            root.setRight(new Node(person));
+        else if (Integer.parseInt(person.ID()) < Integer.parseInt(root.info.ID())) {
+            root.left = new Node(person);
+        } else if (Integer.parseInt(person.ID()) > Integer.parseInt(root.info.ID())) {
+            root.right = new Node(person);
         }
     }
 
@@ -49,24 +49,27 @@ public class MyBSTree {
 
     public Node search(Node root, String id) {
         /* Base Cases: root is null or key is present at root */
-        if (root == null || Objects.equals(root.getInfo().ID(), id))
+        if (root == null || Objects.equals(root.info.ID(), id))
             return root;
 
         /* Key is greater than root's key */
-        if (Integer.parseInt(root.getLeft().getInfo().ID()) < Integer.parseInt(id))
-            return search(root.getRight(), id);
+        if (Integer.parseInt(root.left.info.ID()) < Integer.parseInt(id))
+            return search(root.right, id);
 
         /* Key is smaller than root's key */
-        return search(root.getLeft(), id);
+        return search(root.left, id);
     }
 
     public void delete(String id) {
         int intID = Integer.parseInt(id);
-        if (Integer.parseInt(root.getInfo().ID()) > intID) {
-            delete(root.getLeft().getInfo().ID());
-        } else if (Integer.parseInt(root.getInfo().ID()) < intID) {
-            delete(root.getRight().getInfo().ID());
+        if (Integer.parseInt(root.info.ID()) > intID) {
+            delete(root.left.info.ID());
+        } else if (Integer.parseInt(root.info.ID()) < intID) {
+            delete(root.right.info.ID());
         }
-        /* continue */
+        if (root.left == null) {
+            Node temp = root.right;
+
+        }
     }
 }

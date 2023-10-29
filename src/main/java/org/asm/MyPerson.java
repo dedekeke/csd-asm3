@@ -16,7 +16,7 @@ public class MyPerson {
     public void bst() {}
 
     public Person search(int id) {
-        return tree.search(tree.root, String.valueOf(id)).getInfo();
+        return tree.search(tree.root, String.valueOf(id)).info;
     }
 
     public void delete() {}
