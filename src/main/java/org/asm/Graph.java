@@ -1,6 +1,8 @@
 package org.asm;
 
 import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.util.StringTokenizer;
 
 public class Graph {
     static int INF = 9999;
@@ -8,9 +10,20 @@ public class Graph {
     int n;
     char[] b;
 
-    Graph() {}
+    Graph() {
+        String s1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    }
 
-    void setWeights(String filename) throws IOException {}
+    void setWeights(String filename) throws IOException {
+        int i, j;
+        String s = "", s1 = "";
+        StringTokenizer t;
+        RandomAccessFile f;
+        f = new RandomAccessFile(filename, "r");
+        s = f.readLine();
+        n = Integer.parseInt(s.trim());
+        f.close();
+    }
 
     void displayWeights() {}
 

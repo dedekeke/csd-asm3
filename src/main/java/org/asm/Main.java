@@ -22,8 +22,6 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        OperationToProduct operationToProduct = new OperationToProduct();
-
         int choice;
 
         do {
@@ -38,13 +36,10 @@ public class Main {
                 case 2 -> System.out.println(2);
                 case 3 -> System.out.println(3);
                 case 4 -> System.out.println(4);
-
                 case 5 -> System.out.println(5);
                 case 6 -> System.out.println(6);
                 case 7 -> System.out.println("Product list sorted successfully!");
-
                 case 8 -> System.out.println("Current number: to binary: " );
-
                 case 0 -> System.out.println("Exiting...");
                 default -> System.out.println("Invalid choice. Please try again.");
             }
