@@ -14,6 +14,11 @@ public class Graph {
         String s1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     }
 
+    /**
+     *
+     * @param filename
+     * @throws IOException
+     */
     void setWeights(String filename) throws IOException {
         int i, j;
         String s = "", s1 = "";
@@ -25,15 +30,22 @@ public class Graph {
         f.close();
     }
 
-    void displayWeights() {}
+    void displayWeights() {
+    }
 
-    void displayStep(int step, boolean[] selected, int[] dist, int[] path, int p, int[] sele, int nSele, boolean[] stopDisplay) {}
+    void displayStep(int step, boolean[] selected, int[] dist, int[] path, int p, int[] sele, int nSele,
+            boolean[] stopDisplay) {
+    }
 
-    void dijkstra(boolean[] selected, int[] dist, int[] path, int p, int q, boolean[] stopDisplay) {}
+    void dijkstra(boolean[] selected, int[] dist, int[] path, int p, int q, boolean[] stopDisplay) {
+    }
 
-    void pathDijkstra(int[] dist, int[] path, int p, int q) {}
+    void pathDijkstra(int[] dist, int[] path, int p, int q) {
+    }
 
-    void dijkstra(int p, int q) {}
+    void dijkstra(int p, int q) {
+    }
 
-    void dfs(int k) {}
+    void dfs(int k) {
+    }
 }
