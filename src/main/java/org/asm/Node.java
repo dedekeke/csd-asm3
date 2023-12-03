@@ -12,7 +12,4 @@ public class Node {
         this.info = info;
         left = right = null;
     }
-
 }
-
-

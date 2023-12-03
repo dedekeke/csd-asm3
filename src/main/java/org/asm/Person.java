@@ -3,6 +3,14 @@ package org.asm;
 import java.util.Objects;
 
 public record Person(String ID, String name, String birthplace, String dob) {
+    public Person {
+        if (ID == null || ID.isEmpty()) {
+            throw new IllegalArgumentException("ID cannot be null or empty");
+        }
+        if (!isNumeric(ID)) {
+            throw new IllegalArgumentException("ID must be numeric");
+        }
+    }
 
     @Override
     public String toString() {
@@ -26,5 +34,17 @@ public record Person(String ID, String name, String birthplace, String dob) {
     public int hashCode() {
         return Objects.hash(ID, name, birthplace, dob);
     }
-}
 
+    // check id
+    private boolean isNumeric(String str) {
+        if (str == null || str.isEmpty()) {
+            return false;
+        }
+        for (char c : str.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
