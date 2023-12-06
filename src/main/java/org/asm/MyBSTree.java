@@ -1,7 +1,10 @@
 package org.asm;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+
+import javax.swing.tree.TreeNode;
 
 public class MyBSTree {
     public Node root;
@@ -80,20 +83,6 @@ public class MyBSTree {
         }
     }
 
-    void inOrder(ArrayList<Person> list, Node node) {
-        if (node == null)
-            return;
-
-        // First recur on left child
-        inOrder(node.left);
-
-        // Then print the data of node
-        System.out.print(node.info.name() + " ");
-
-        // Now recur on right child
-        inOrder(node.right);
-    }
-
     private void balance(ArrayList<Person> list, int first, int last) {
         if (first <= last) {
             int middle = (first + last) / 2;
@@ -120,7 +109,7 @@ public class MyBSTree {
         return search(root.left, id);
     }
 
-    Node delete(Node root, int id) {
+    public Node delete(Node root, int id) {
         // Base case
         if (root == null)
             return root;
@@ -175,6 +164,22 @@ public class MyBSTree {
 
             // Delete Successor and return root
             return root;
+        }
+    }
+
+    // toList method
+    ArrayList<Person> persons = new ArrayList<Person>();
+
+    public ArrayList<Person> toList(MyBSTree tree) {
+        personList(tree.root);
+        return persons;
+    }
+
+    private void personList(Node node) {
+        if (node != null) {
+            personList(root.left);
+            persons.add(node.info);
+            personList(root.right);
         }
     }
 }

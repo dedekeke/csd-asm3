@@ -30,6 +30,7 @@ public class Main {
             System.out.print("choice = ");
             choice = scanner.nextInt();
 
+            // TO-DO add main function + 7 + 8 + 3
             switch (choice) {
                 case 1 -> {
                     System.out.println("1");

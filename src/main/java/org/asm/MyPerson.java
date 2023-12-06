@@ -1,5 +1,7 @@
 package org.asm;
 
+import java.util.ArrayList;
+
 public class MyPerson {
     MyBSTree tree;
 
@@ -11,15 +13,23 @@ public class MyPerson {
         tree.insert(person);
     }
 
-    public void inOrder() {}
-
-    public void bst() {}
-
-    public Person search(int id) {
-        return tree.search(tree.root, String.valueOf(id)).info;
+    public void inOrder() {
+        tree.inOrder(tree.root);
     }
 
-    public void delete() {}
+    public void bst() {
+    }
 
-    public void balance() {}
+    public Person search(String id) {
+        return tree.search(tree.root, id).info;
+    }
+
+    public void delete(String id) {
+        tree.delete(tree.root, Integer.parseInt(id));
+    }
+
+    public void balance() {
+        ArrayList<Person> persons = tree.toList(tree);
+        tree.balance(persons);
+    }
 }
