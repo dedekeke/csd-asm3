@@ -19,6 +19,7 @@ public class Main {
         System.out.println("---------------------------------------------------");
     }
 
+    // TO-DO add main function + 7 + 8 + 3
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         MyPerson person = new MyPerson();
@@ -33,18 +34,31 @@ public class Main {
             // TO-DO add main function + 7 + 8 + 3
             switch (choice) {
                 case 1 -> {
-                    System.out.println("1");
+                    person.insert(null);
                 }
                 // Duyệt cây BST theo thứ tự giữa (Inorder)
-                case 2 -> System.out.println(2);
+                case 2 -> {
+                    person.inOrder();
+                }
                 // Duyệt cây BST theo chiều rộng sử dụng thuật toán Breadth-First Traversal
                 // (BFT)
-                case 3 -> System.out.println(3);
-                case 4 -> System.out.println(4);
+                case 3 -> {
+                    // not yet
+                }
+                case 4 -> {
+                    String id = scanner.next();
+                    person.search(id);
+                }
 
-                case 5 -> System.out.println(5);
+                case 5 -> {
+                    String id = scanner.next();
+                    person.delete(id);
+                }
                 // Cân bằng cây BST
-                case 6 -> System.out.println(6);
+                case 6 -> {
+                    // balance the tree
+                    person.balance();
+                }
                 // Duyệt đồ thị theo chiều sâu sử dụng thuật toán Depth-First Traversal (DFT)
                 // In ra tên tất cả các thành phố (dùng phương pháp duyệt đồ thị theo chiều
                 // sâu).

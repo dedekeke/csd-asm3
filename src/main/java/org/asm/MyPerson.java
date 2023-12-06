@@ -2,6 +2,7 @@ package org.asm;
 
 import java.util.ArrayList;
 
+//TO-DO add scanners
 public class MyPerson {
     MyBSTree tree;
 
