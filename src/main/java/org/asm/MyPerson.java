@@ -1,8 +1,8 @@
 package org.asm;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
-//TO-DO add scanners
 public class MyPerson {
     MyBSTree tree;
 
@@ -10,8 +10,21 @@ public class MyPerson {
         tree = new MyBSTree();
     }
 
-    public void insert(Person person) {
+    public void insert() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("ID: ");
+        // if statement to check unique id
+        Integer id = scanner.nextInt();
+        System.out.println("Name: ");
+        String name = scanner.next();
+        System.out.println("Birthplace: ");
+        String birthplace = scanner.next();
+        System.out.println("Date of birth: ");
+        String dob = scanner.next();
+        Person person = new Person(Integer.toString(id), name, birthplace, dob);
         tree.insert(person);
+        System.out.println("New person added;");
+        scanner.close();
     }
 
     public void inOrder() {
@@ -19,9 +32,15 @@ public class MyPerson {
     }
 
     public void bst() {
+        tree.bft(tree.root);
     }
 
     public Person search(String id) {
+        Node searchByID = tree.search(tree.root, id);
+        if (searchByID == null) {
+            System.out.println("Person with ID: " + id + " not found.");
+            return null;
+        }
         return tree.search(tree.root, id).info;
     }
 

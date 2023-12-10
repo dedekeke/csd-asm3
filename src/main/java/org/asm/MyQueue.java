@@ -1,19 +1,30 @@
 package org.asm;
 
 import java.util.LinkedList;
+import java.util.NoSuchElementException;
 
 public class MyQueue {
-    LinkedList list = null;
-    Object object = null;
+    LinkedList<Object> list = new LinkedList<>();
 
-    public MyQueue() {
+    public void enqueue(Object obj) {
+        list.addLast(obj);
     }
 
-    public void enqueue(Object obj) {}
+    public boolean isEmpty() {
+        return list.isEmpty();
+    }
 
-    public boolean isEmpty() { return true; }
+    public Object dequeue() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Queue is empty.");
+        }
+        return list.removeFirst();
+    }
 
-    public Object dequeue() { return null; }
-
-    public Object front() { return null; }
+    public Object front() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Queue is empty.");
+        }
+        return list.getFirst();
+    }
 }

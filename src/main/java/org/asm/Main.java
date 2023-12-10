@@ -19,7 +19,7 @@ public class Main {
         System.out.println("---------------------------------------------------");
     }
 
-    // TO-DO add main function + 7 + 8 + 3
+    // TO-DO add main function + 7 + 8
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         MyPerson person = new MyPerson();
@@ -31,19 +31,18 @@ public class Main {
             System.out.print("choice = ");
             choice = scanner.nextInt();
 
-            // TO-DO add main function + 7 + 8 + 3
+            // TO-DO add main function + 7 + 8
             switch (choice) {
                 case 1 -> {
-                    person.insert(null);
+                    person.insert();
                 }
                 // Duyệt cây BST theo thứ tự giữa (Inorder)
                 case 2 -> {
                     person.inOrder();
                 }
-                // Duyệt cây BST theo chiều rộng sử dụng thuật toán Breadth-First Traversal
-                // (BFT)
+                // tree traversal using breadth-first traversal
                 case 3 -> {
-                    // not yet
+                    person.bst();
                 }
                 case 4 -> {
                     String id = scanner.next();
@@ -56,7 +55,6 @@ public class Main {
                 }
                 // Cân bằng cây BST
                 case 6 -> {
-                    // balance the tree
                     person.balance();
                 }
                 // Duyệt đồ thị theo chiều sâu sử dụng thuật toán Depth-First Traversal (DFT)
@@ -67,7 +65,9 @@ public class Main {
                 // Dijkstra theo yêu cầu dưới đây:
                 // - in ra đường đi ngắn nhất và độ dài của đường đi ngắn nhất đó từ thành phố A
                 // đến thành phố E bằng thuật toán Dijkstra.
-                case 8 -> System.out.println("Current number: to binary: ");
+                case 8 -> {
+                    System.out.println("Dijk");
+                }
 
                 case 0 -> System.out.println("Exiting...");
                 default -> System.out.println("Invalid choice. Please try again.");

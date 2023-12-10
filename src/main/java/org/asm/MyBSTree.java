@@ -30,13 +30,10 @@ public class MyBSTree {
     public void inOrder(Node node) {
         if (node == null)
             return;
-
         // First recur on left child
         inOrder(node.left);
-
         // Then print the data of node
         System.out.print(node.info + " ");
-
         // Now recur on right child
         inOrder(node.right);
     }
@@ -45,7 +42,28 @@ public class MyBSTree {
         return 1;
     }
 
+    // Breadth first traversal
     public void bft(Node node) {
+        if (node == null) {
+            return;
+        }
+
+        MyQueue queue = new MyQueue();
+        queue.enqueue(node);
+
+        while (!queue.isEmpty()) {
+            Node currentNode = (Node) queue.dequeue();
+
+            System.out.print(currentNode.info + " ");
+            // enqueue left child
+            if (currentNode.left != null) {
+                queue.enqueue(currentNode.left);
+            }
+            // enqueue right child
+            if (currentNode.right != null) {
+                queue.enqueue(currentNode.right);
+            }
+        }
     }
 
     public void insert(Person person) {
