@@ -25,12 +25,24 @@ public class Graph {
      */
     void setWeights(String filename) throws IOException {
         int i, j;
-        String s = "", s1 = "";
+        String s = "";
         StringTokenizer t;
         RandomAccessFile f;
         f = new RandomAccessFile(filename, "r");
         s = f.readLine();
         n = Integer.parseInt(s.trim());
+
+        // Initialize the matrix
+        a = new int[n][n];
+
+        // Read the rest of the file and construct the graph matrix
+        for (i = 0; i < n; i++) {
+            s = f.readLine();
+            t = new StringTokenizer(s);
+            for (j = 0; j < n; j++) {
+                a[i][j] = Integer.parseInt(t.nextToken());
+            }
+        }
         f.close();
     }
 
@@ -38,6 +50,11 @@ public class Graph {
      * Printing the matrix of this graph
      */
     void displayWeights() {
+        if (a == null || a.length == 0 || a[0].length == 0) {
+            System.out.println("No data to display.");
+            return;
+        }
+        System.out.println("Weight Matrix:");
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (a[i][j] == INF) {
@@ -68,7 +85,10 @@ public class Graph {
         System.out.println();
         System.out.print("Path: ");
         for (int i = 0; i < nSele; i++) {
-            System.out.print(b[sele[i]] + " -> ");
+            System.out.print(b[sele[i]]);
+            if (i != nSele - 1) {
+                System.out.print(" -> ");
+            }
         }
         System.out.println(b[p]);
     }
@@ -118,20 +138,28 @@ public class Graph {
         }
     }
 
+    // k is starting point
     void dfs(int k) {
-        boolean[] selected = new boolean[n];
-        int[] dist = new int[n];
-        int[] path = new int[n];
-        for (int i = 0; i < n; i++) {
-            selected[i] = false;
-            dist[i] = INF;
-            path[i] = -1;
-        }
-        dist[k] = 0;
-        selected[k] = true;
-        int u = k;
-        while (u != -1) {
-            u = path[u];
+        boolean[] visited = new boolean[n];
+        MyStack<Integer> stack = new MyStack<>();
+        stack.push(k);
+
+        while (!stack.isEmpty()) {
+            var current = stack.pop();
+            if (!visited[current]) {
+                visited[current] = true;
+                System.out.println("Visited node: " + b[current]); // Or perform any other operation
+
+                for (int i = 0; i < n; i++) {
+                    if (a[current][i] != INF && !visited[i]) {
+                        stack.push(i);
+                    }
+                }
+            }
         }
     }
+
+    // main function of Graph
+    // Graph creation
+
 }

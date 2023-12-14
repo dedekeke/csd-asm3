@@ -98,6 +98,20 @@ public class MyBSTree {
         }
     }
 
+    // First, calling the inOrder(ArrayList<Person> list, Node node) to
+
+    // copy all items from the tree to array
+
+    // inOrder(ArrayList<Person> list, Node node);
+
+    //
+
+    // Second, calling the balance(ArrayList<Person> list, int first, int last)
+
+    // to balance the tree
+
+    // balance(ArrayList<Person> list, int first, int last)
+
     private void balance(ArrayList<Person> list, int first, int last) {
         if (first <= last) {
             int middle = (first + last) / 2;

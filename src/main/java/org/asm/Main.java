@@ -1,5 +1,6 @@
 package org.asm;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -23,6 +24,9 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         MyPerson person = new MyPerson();
+        Graph graph = new Graph();
+        String graphString;
+        String filePath = "/src/graph.txt";
 
         int choice;
 
@@ -60,13 +64,21 @@ public class Main {
                 // Duyệt đồ thị theo chiều sâu sử dụng thuật toán Depth-First Traversal (DFT)
                 // In ra tên tất cả các thành phố (dùng phương pháp duyệt đồ thị theo chiều
                 // sâu).
-                case 7 -> System.out.println("Product list sorted successfully!");
+                case 7 -> {
+                    System.out.println("sample string: ");
+                    graphString = scanner.next();
+                    try {
+                        graph.setWeights(filePath);
+                    } catch (IOException e) {
+                        System.out.println("Error: " + e.getMessage());
+                    }
+                }
                 // Tìm đường đi ngắn nhất khi đi từ thành phố A đến thành phố F bằng thuật toán
                 // Dijkstra theo yêu cầu dưới đây:
                 // - in ra đường đi ngắn nhất và độ dài của đường đi ngắn nhất đó từ thành phố A
                 // đến thành phố E bằng thuật toán Dijkstra.
                 case 8 -> {
-                    System.out.println("Dijk");
+                    graph.displayWeights();
                 }
 
                 case 0 -> System.out.println("Exiting...");
