@@ -16,6 +16,7 @@ public class Graph {
 
     Graph() {
         String s1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        b = s1.toCharArray();
     }
 
     /**
@@ -93,7 +94,8 @@ public class Graph {
         System.out.println(b[p]);
     }
 
-    void dijkstra(boolean[] selected, int[] dist, int[] path, int p, int q, boolean[] stopDisplay) {
+    void dijkstra(boolean[] selected, int[] dist, int[] path, int p, int q,
+            boolean[] stopDisplay) {
         if (dist[q] == INF) {
             System.out.println("No path from " + b[p] + " to " + b[q]);
             return;
@@ -105,6 +107,62 @@ public class Graph {
             System.out.print(" <- " + b[u]);
         }
         System.out.println();
+    }
+
+    // your code here
+    void dijkstra(int p, int q) {
+        boolean[] selected = new boolean[n];
+        int[] dist = new int[n];
+        int[] path = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            selected[i] = false;
+            dist[i] = INF;
+            path[i] = -1;
+        }
+
+        dist[p] = 0;
+
+        for (int count = 0; count < n - 1; count++) {
+            int u = -1;
+            int minDist = INF;
+
+            for (int v = 0; v < n; v++) {
+                if (!selected[v] && dist[v] < minDist) {
+                    u = v;
+                    minDist = dist[v];
+                }
+            }
+
+            if (u == -1) {
+                break; // No more vertices to explore or all remaining vertices are unreachable
+            }
+
+            selected[u] = true;
+
+            for (int v = 0; v < n; v++) {
+                if (!selected[v] && a[u][v] != INF && dist[u] + a[u][v] < dist[v]) {
+                    dist[v] = dist[u] + a[u][v];
+                    path[v] = u;
+                }
+            }
+        }
+
+        // Displaying the shortest path and distance from vertex p to vertex q
+        if (dist[q] == INF) {
+            System.out.println("No path from " + b[p] + " to " + b[q]);
+            return;
+        }
+
+        System.out.println("The length of shortest path from " + b[p] + " to " + b[q] + " is " + dist[q]);
+
+        System.out.print("Path: ");
+        int u = q;
+        while (u != p) {
+            System.out.print(b[u] + " <- ");
+            u = path[u];
+        }
+        System.out.println(b[p]);
     }
 
     void pathDijkstra(int[] dist, int[] path, int p, int q) {
@@ -119,23 +177,6 @@ public class Graph {
             System.out.print(" <- " + b[u]);
         }
         System.out.println();
-    }
-
-    void dijkstra(int p, int q) {
-        boolean[] selected = new boolean[n];
-        int[] dist = new int[n];
-        int[] path = new int[n];
-        for (int i = 0; i < n; i++) {
-            selected[i] = false;
-            dist[i] = INF;
-            path[i] = -1;
-        }
-        dist[p] = 0;
-        selected[p] = true;
-        int u = p;
-        while (u != q) {
-            u = path[u];
-        }
     }
 
     // k is starting point
