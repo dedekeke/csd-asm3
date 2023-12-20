@@ -7,7 +7,7 @@ public class MyStack<T> {
     LinkedList<T> list;
 
     MyStack() {
-        list = null;
+        list = new LinkedList<>();
     }
 
     boolean isEmpty() {

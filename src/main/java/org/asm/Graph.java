@@ -13,9 +13,9 @@ public class Graph {
     int n;
     // output array contains vertexes presented by character
     char[] b;
+    String s1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     Graph() {
-        String s1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         b = s1.toCharArray();
     }
 
@@ -109,7 +109,6 @@ public class Graph {
         System.out.println();
     }
 
-    // your code here
     void dijkstra(int p, int q) {
         boolean[] selected = new boolean[n];
         int[] dist = new int[n];
@@ -146,6 +145,7 @@ public class Graph {
                     path[v] = u;
                 }
             }
+            displayStep(p, selected, dist, path, p, path, minDist, selected);
         }
 
         // Displaying the shortest path and distance from vertex p to vertex q
@@ -163,6 +163,8 @@ public class Graph {
             u = path[u];
         }
         System.out.println(b[p]);
+
+        pathDijkstra(dist, path, p, q);
     }
 
     void pathDijkstra(int[] dist, int[] path, int p, int q) {
@@ -179,17 +181,18 @@ public class Graph {
         System.out.println();
     }
 
-    // k is starting point
     void dfs(int k) {
         boolean[] visited = new boolean[n];
         MyStack<Integer> stack = new MyStack<>();
         stack.push(k);
+        StringBuilder result = new StringBuilder(); // To store the visited nodes
 
         while (!stack.isEmpty()) {
-            var current = stack.pop();
+            int current = stack.pop();
             if (!visited[current]) {
                 visited[current] = true;
-                System.out.println("Visited node: " + b[current]); // Or perform any other operation
+                result.append(b[current]);
+                System.out.println("Visited node: " + b[current]);
 
                 for (int i = 0; i < n; i++) {
                     if (a[current][i] != INF && !visited[i]) {
@@ -198,9 +201,7 @@ public class Graph {
                 }
             }
         }
+        // Print the sequence of visited nodes in the required format
+        System.out.println("DFS_Graph: " + result.toString());
     }
-
-    // main function of Graph
-    // Graph creation
-
 }

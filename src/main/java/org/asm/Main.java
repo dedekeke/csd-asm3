@@ -1,10 +1,9 @@
 package org.asm;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-    public static void showMenu() {
+    private static void showMenu() {
         System.out.println("\n---------------------------------------------------");
         System.out.println("Choose one of this options:");
         System.out.println("Person Tree:");
@@ -20,13 +19,23 @@ public class Main {
         System.out.println("---------------------------------------------------");
     }
 
+    public static void initGraph(Graph graph) {
+        String filePath = "src/graph.txt";
+        // String filePath = "/Users/bkinm1/Desktop/your
+        // map/temp/Funix/as3/csd-asm3/src/graph.txt";
+        try {
+            graph.setWeights(filePath);
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
     // TO-DO add main function + 7 + 8
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         MyPerson person = new MyPerson();
         Graph graph = new Graph();
-        String graphString;
-        String filePath = "/src/graph.txt";
+        initGraph(graph);
 
         int choice;
 
@@ -61,24 +70,25 @@ public class Main {
                 case 6 -> {
                     person.balance();
                 }
-                // Duyệt đồ thị theo chiều sâu sử dụng thuật toán Depth-First Traversal (DFT)
-                // In ra tên tất cả các thành phố (dùng phương pháp duyệt đồ thị theo chiều
-                // sâu).
                 case 7 -> {
-                    System.out.println("sample string: ");
-                    graphString = scanner.next();
+                    System.out.println("Starting point :");
+                    int startingPoint = scanner.nextInt();
                     try {
-                        graph.setWeights(filePath);
-                    } catch (IOException e) {
+                        graph.dfs(startingPoint);
+                    } catch (Exception e) {
                         System.out.println("Error: " + e.getMessage());
                     }
                 }
-                // Tìm đường đi ngắn nhất khi đi từ thành phố A đến thành phố F bằng thuật toán
-                // Dijkstra theo yêu cầu dưới đây:
-                // - in ra đường đi ngắn nhất và độ dài của đường đi ngắn nhất đó từ thành phố A
-                // đến thành phố E bằng thuật toán Dijkstra.
                 case 8 -> {
-                    graph.displayWeights();
+                    System.out.println("Starting point :");
+                    int startingPoint = scanner.nextInt();
+                    System.out.println("Endpoint :");
+                    int endpoint = scanner.nextInt();
+                    try {
+                        graph.dijkstra(startingPoint, endpoint);
+                    } catch (Exception e) {
+                        System.out.println("Error: " + e.getMessage());
+                    }
                 }
 
                 case 0 -> System.out.println("Exiting...");
