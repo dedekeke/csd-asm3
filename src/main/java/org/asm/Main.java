@@ -46,30 +46,27 @@ public class Main {
 
             // TO-DO add main function + 7 + 8
             switch (choice) {
-                case 1 -> {
-                    person.insert();
-                }
+                case 1 -> person.insert();
+
                 // Duyệt cây BST theo thứ tự giữa (Inorder)
-                case 2 -> {
-                    person.inOrder();
-                }
+                case 2 -> person.inOrder();
+
                 // tree traversal using breadth-first traversal
-                case 3 -> {
-                    person.bst();
-                }
+                case 3 -> person.bst();
+
                 case 4 -> {
                     String id = scanner.next();
                     person.search(id);
                 }
 
                 case 5 -> {
+                    System.out.println("ID to delete: ");
                     String id = scanner.next();
                     person.delete(id);
                 }
                 // Cân bằng cây BST
-                case 6 -> {
-                    person.balance();
-                }
+                case 6 -> person.balance();
+
                 case 7 -> {
                     System.out.println("Starting point :");
                     int startingPoint = scanner.nextInt();

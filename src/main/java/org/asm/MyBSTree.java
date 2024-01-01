@@ -24,7 +24,7 @@ public class MyBSTree {
     }
 
     public boolean isEmpty() {
-        return true;
+        return root == null;
     }
 
     public void inOrder(Node node) {
@@ -33,13 +33,18 @@ public class MyBSTree {
         // First recur on left child
         inOrder(node.left);
         // Then print the data of node
-        System.out.print(node.info + " ");
+        System.out.println(node.info + " ");
         // Now recur on right child
         inOrder(node.right);
     }
 
-    public int count(Node node) {
-        return 1;
+    private void inOrder(ArrayList<Person> list, Node node) {
+        if (node == null) {
+            return;
+        }
+        inOrder(list, node.left);
+        list.add(node.info);
+        inOrder(list, node.right);
     }
 
     // Breadth first traversal
@@ -98,40 +103,46 @@ public class MyBSTree {
         }
     }
 
-    // First, calling the inOrder(ArrayList<Person> list, Node node) to
+    /**
+     * First, calling the inOrder(ArrayList<Person> list, Node node) to
+     * copy all items from the tree to array
+     * inOrder(ArrayList<Person> list, Node node);
+     * Second, calling the balance(ArrayList<Person> list, int first, int last)
+     * to balance the tree
+     * balance(ArrayList<Person> list, int first, int last)
+     * 
+     * @param list
+     * @param first
+     * @param last
+     * @return
+     */
 
-    // copy all items from the tree to array
-
-    // inOrder(ArrayList<Person> list, Node node);
-
-    //
-
-    // Second, calling the balance(ArrayList<Person> list, int first, int last)
-
-    // to balance the tree
-
-    // balance(ArrayList<Person> list, int first, int last)
-
-    private void balance(ArrayList<Person> list, int first, int last) {
-        if (first <= last) {
-            int middle = (first + last) / 2;
-            insert(list.get(middle));
-            balance(list, first, middle - 1);
-            balance(list, middle + 1, last);
-        }
+    private Node balance(ArrayList<Person> list, int first, int last) {
+        if (first > last)
+            return null;
+        int middle = (first + last) / 2;
+        Node current = new Node(list.get(middle));
+        current.left = balance(list, first, middle - 1);
+        current.right = balance(list, middle + 1, last);
+        return current;
     }
 
-    public void balance(ArrayList<Person> list) {
+    public void balance() {
+        // store nodes of given BST in sorted order
+        ArrayList<Person> list = new ArrayList<>();
+        inOrder(list, root);
         balance(list, 0, list.size() - 1);
     }
 
     public Node search(Node root, String id) {
+        int idInt = Integer.parseInt(id);
         /* Base Cases: root is null or key is present at root */
-        if (root == null || Objects.equals(root.info.ID(), id))
+        if (root == null)
             return root;
-
+        if (root.info != null && root.info.ID() == id)
+            return root;
         /* Key is greater than root's key */
-        if (Integer.parseInt(root.left.info.ID()) < Integer.parseInt(id))
+        if (Integer.parseInt(root.left.info.ID()) < idInt)
             return search(root.right, id);
 
         /* Key is smaller than root's key */
@@ -142,7 +153,6 @@ public class MyBSTree {
         // Base case
         if (root == null)
             return root;
-
         // Recursive calls for ancestors of
         // node to be deleted
         if (Integer.parseInt(root.info.ID()) > id) {
