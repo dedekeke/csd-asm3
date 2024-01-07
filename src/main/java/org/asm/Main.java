@@ -53,18 +53,21 @@ public class Main {
 
                 // tree traversal using breadth-first traversal
                 case 3 -> person.bst();
-
                 case 4 -> {
+                    System.out.println("Search ID: ");
                     String id = scanner.next();
-                    person.search(id);
+                    Person searchResult = person.search(id);
+                    if (searchResult != null) {
+                        System.out.println("Person found: " + searchResult.toString());
+                    }
                 }
-
                 case 5 -> {
                     System.out.println("ID to delete: ");
                     String id = scanner.next();
                     person.delete(id);
                 }
                 // Cân bằng cây BST
+                // TODO bug
                 case 6 -> person.balance();
 
                 case 7 -> {

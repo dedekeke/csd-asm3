@@ -59,7 +59,7 @@ public class MyBSTree {
         while (!queue.isEmpty()) {
             Node currentNode = (Node) queue.dequeue();
 
-            System.out.print(currentNode.info + " ");
+            System.out.println(currentNode.info + " ");
             // enqueue left child
             if (currentNode.left != null) {
                 queue.enqueue(currentNode.left);
@@ -135,75 +135,66 @@ public class MyBSTree {
     }
 
     public Node search(Node root, String id) {
-        int idInt = Integer.parseInt(id);
-        /* Base Cases: root is null or key is present at root */
         if (root == null)
-            return root;
-        if (root.info != null && root.info.ID() == id)
+            return null;
+
+        int idInt = Integer.parseInt(id);
+        int rootIdInt = Integer.parseInt(root.info.ID());
+
+        /* Base Cases: root is null or key is present at root */
+        if (rootIdInt == idInt)
             return root;
         /* Key is greater than root's key */
-        if (Integer.parseInt(root.left.info.ID()) < idInt)
+        else if (rootIdInt < idInt)
             return search(root.right, id);
-
         /* Key is smaller than root's key */
-        return search(root.left, id);
+        else
+            return search(root.left, id);
+
     }
 
     public Node delete(Node root, int id) {
-        // Base case
-        if (root == null)
+        if (root == null) {
             return root;
-        // Recursive calls for ancestors of
-        // node to be deleted
-        if (Integer.parseInt(root.info.ID()) > id) {
+        }
+
+        // If the key to be deleted is smaller than the root's key,
+        // then it lies in the left subtree
+        if (id < Integer.parseInt(root.info.ID())) {
             root.left = delete(root.left, id);
-            return root;
-        } else if (Integer.parseInt(root.info.ID()) < id) {
+        } else if (id > Integer.parseInt(root.info.ID())) {
+            // If the key to be deleted is greater than the root's key,
+            // then it lies in the right subtree
             root.right = delete(root.right, id);
-            return root;
-        }
-
-        // We reach here when root is the node
-        // to be deleted.
-
-        // If one of the children is empty
-        if (root.left == null) {
-            Node temp = root.right;
-            return temp;
-        } else if (root.right == null) {
-            Node temp = root.left;
-            return temp;
-        }
-
-        // If both children exist
-        else {
-
-            Node succParent = root;
-
-            // Find successor
-            Node succ = root.right;
-            while (succ.left != null) {
-                succParent = succ;
-                succ = succ.left;
+        } else {
+            // Node with only one child or no child
+            if (root.left == null) {
+                System.out.println("Deleted node with ID: " + root.info.ID());
+                return root.right;
+            } else if (root.right == null) {
+                System.out.println("Deleted node with ID: " + root.info.ID());
+                return root.left;
             }
 
-            // Delete successor. Since successor
-            // is always left child of its parent
-            // we can safely make successor's right
-            // right child as left of its parent.
-            // If there is no succ, then assign
-            // succ.right to succParent.right
-            if (succParent != root)
-                succParent.left = succ.right;
-            else
-                succParent.right = succ.right;
+            // Node with two children: Get the inorder successor
+            // (smallest in the right subtree)
+            Node successor = findSuccessor(root.right);
 
-            // Copy Successor Data to root
-            root.info = succ.info;
+            // Copy the inorder successor's content to this node
+            root.info = successor.info;
 
-            // Delete Successor and return root
-            return root;
+            // Delete the inorder successor
+            root.right = delete(root.right, Integer.parseInt(successor.info.ID()));
         }
+        return root;
+    }
+
+    private Node findSuccessor(Node node) {
+        Node current = node;
+        while (current.left != null) {
+            current = current.left;
+        }
+        return current;
     }
 
     // toList method
