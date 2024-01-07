@@ -36,6 +36,7 @@ public class Main {
         MyPerson person = new MyPerson();
         Graph graph = new Graph();
         initGraph(graph);
+        person.initSamplePersonList();
 
         int choice;
 
@@ -44,11 +45,9 @@ public class Main {
             System.out.print("choice = ");
             choice = scanner.nextInt();
 
-            // TO-DO add main function + 7 + 8
             switch (choice) {
                 case 1 -> person.insert();
 
-                // Duyệt cây BST theo thứ tự giữa (Inorder)
                 case 2 -> person.inOrder();
 
                 // tree traversal using breadth-first traversal
@@ -66,8 +65,6 @@ public class Main {
                     String id = scanner.next();
                     person.delete(id);
                 }
-                // Cân bằng cây BST
-                // TODO bug
                 case 6 -> person.balance();
 
                 case 7 -> {

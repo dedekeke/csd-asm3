@@ -31,7 +31,7 @@ public class Graph {
         RandomAccessFile f;
         f = new RandomAccessFile(filename, "r");
         s = f.readLine();
-        n = Integer.parseInt(s.trim());
+        n = Integer.parseInt(s.trim()); // 25
 
         // Initialize the matrix
         a = new int[n][n];

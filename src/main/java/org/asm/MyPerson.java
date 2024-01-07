@@ -85,4 +85,40 @@ public class MyPerson {
         }
         return true;
     }
+
+    public void initSamplePersonList() {
+        //           4
+        //         /   \
+        //        3     5
+        //       /       \
+        //      2         6 
+        //     /           \
+        //    1             7
+        Person[] persons = {
+                new Person("4", "John Wick", "Black hole", "0209"),
+                new Person("3", "Alice", "Wonderland", "0503"),
+                new Person("2", "Bob", "Atlantis", "1221"),
+                new Person("1", "Charlie", "Olympus", "0101"),
+                new Person("5", "Eva", "Gotham", "1122"),
+                new Person("6", "Frank", "Rivendell", "0714"),
+                new Person("7", "Grace", "Valhalla", "0408")
+        };
+
+        //          4
+        //         /
+        //        3
+        //       /
+        //      2
+        //     /
+        //    1
+        // Person[] persons = {
+        //         new Person("4", "John Wick", "Black hole", "0209"),
+        //         new Person("3", "Alice", "Wonderland", "0503"),
+        //         new Person("2", "Bob", "Atlantis", "1221"),
+        //         new Person("1", "Charlie", "Olympus", "0101")
+        // };
+        for (Person p : persons) {
+            tree.insert(p);
+        }
+    }
 }

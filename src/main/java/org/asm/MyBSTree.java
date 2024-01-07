@@ -131,7 +131,7 @@ public class MyBSTree {
         // store nodes of given BST in sorted order
         ArrayList<Person> list = new ArrayList<>();
         inOrder(list, root);
-        balance(list, 0, list.size() - 1);
+        root = balance(list, 0, list.size() - 1);
     }
 
     public Node search(Node root, String id) {

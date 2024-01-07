@@ -11,7 +11,7 @@ public record Person(String ID, String name, String birthplace, String dob) {
 
     @Override
     public String toString() {
-        return String.format("%-10s %-10s %-10s %-10s", ID, name, dob, birthplace);
+        return String.format("%-10s %-10s %-10s %-10s", ID, name, birthplace, dob);
     }
 
     @Override
