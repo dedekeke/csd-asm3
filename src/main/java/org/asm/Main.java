@@ -52,6 +52,7 @@ public class Main {
 
                 // tree traversal using breadth-first traversal
                 case 3 -> person.bst();
+
                 case 4 -> {
                     System.out.println("Search ID: ");
                     String id = scanner.next();
@@ -60,11 +61,13 @@ public class Main {
                         System.out.println("Person found: " + searchResult.toString());
                     }
                 }
+
                 case 5 -> {
                     System.out.println("ID to delete: ");
                     String id = scanner.next();
                     person.delete(id);
                 }
+
                 case 6 -> person.balance();
                 // TODO investigate
                 case 7 -> {
@@ -76,6 +79,7 @@ public class Main {
                         System.out.println("Error: " + e.getMessage());
                     }
                 }
+
                 case 8 -> {
                     System.out.println("Starting point :");
                     int startingPoint = scanner.nextInt();

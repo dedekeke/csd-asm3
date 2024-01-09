@@ -6,8 +6,6 @@
 /dataSources/
 /dataSources.local.xml
 /.idea
-/target/
 target/
-target/**
 
 .DS_Store
