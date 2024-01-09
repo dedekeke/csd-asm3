@@ -71,7 +71,6 @@ public class Main {
                 }
 
                 case 6 -> person.balance();
-                // TODO investigate
                 case 7 -> {
                     System.out.println("Starting point :");
                     int startingPoint = scanner.nextInt();
@@ -81,8 +80,8 @@ public class Main {
                         System.out.println("Error: " + e.getMessage());
                     }
                 }
-                // TODO wrong
                 case 8 -> {
+                    System.out.println("ABCDEFG");
                     System.out.println("Starting point :");
                     int startingPoint = scanner.nextInt();
                     System.out.println("Endpoint :");
