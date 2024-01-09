@@ -15,6 +15,7 @@ public class Main {
         System.out.println("6. Balancing Binary Search Tree ");
         System.out.println("7. DFS_Graph");
         System.out.println("8. Dijkstra");
+        System.out.println("9. Display weight matrix (for demo purposes)");
         System.out.println("0. Exit");
         System.out.println("---------------------------------------------------");
     }
@@ -30,7 +31,6 @@ public class Main {
         }
     }
 
-    // TO-DO add main function + 7 + 8
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         MyPerson person = new MyPerson();
@@ -66,7 +66,7 @@ public class Main {
                     person.delete(id);
                 }
                 case 6 -> person.balance();
-
+                // TODO investigate
                 case 7 -> {
                     System.out.println("Starting point :");
                     int startingPoint = scanner.nextInt();
@@ -86,6 +86,10 @@ public class Main {
                     } catch (Exception e) {
                         System.out.println("Error: " + e.getMessage());
                     }
+                }
+                // test graph
+                case 9 -> {
+                    graph.displayWeights();
                 }
 
                 case 0 -> System.out.println("Exiting...");

@@ -18,6 +18,7 @@ public class MyStack<T> {
         list.push(obj);
     }
 
+    // remove first element
     T pop() {
         if (!list.isEmpty()) {
             return list.pop();

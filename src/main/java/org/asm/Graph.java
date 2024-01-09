@@ -195,6 +195,7 @@ public class Graph {
                 System.out.println("Visited node: " + b[current]);
 
                 for (int i = 0; i < n; i++) {
+                    // check if there exists an edge between current and node i
                     if (a[current][i] != INF && !visited[i]) {
                         stack.push(i);
                     }
