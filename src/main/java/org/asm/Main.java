@@ -1,5 +1,6 @@
 package org.asm;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -16,16 +17,17 @@ public class Main {
         System.out.println("7. DFS_Graph");
         System.out.println("8. Dijkstra");
         System.out.println("9. Display weight matrix (for demo purposes)");
+        System.out.println("10. Set weight matrix");
         System.out.println("0. Exit");
         System.out.println("---------------------------------------------------");
     }
 
     public static void initGraph(Graph graph) {
-        String filePath = "src/graph.txt";
-        // String filePath = "/Users/bkinm1/Desktop/your
-        // map/temp/Funix/as3/csd-asm3/src/graph.txt";
+//        String filePath = "src/straightLine.txt";
+        String filePath = "src/seven.txt";
         try {
             graph.setWeights(filePath);
+            System.out.println(graph.n);
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -79,7 +81,7 @@ public class Main {
                         System.out.println("Error: " + e.getMessage());
                     }
                 }
-
+                // TODO wrong
                 case 8 -> {
                     System.out.println("Starting point :");
                     int startingPoint = scanner.nextInt();
@@ -92,10 +94,28 @@ public class Main {
                     }
                 }
                 // test graph
-                case 9 -> {
-                    graph.displayWeights();
+                case 9 -> graph.displayWeights();
+                // init graph
+                case 10 -> {
+                    System.out.println("Choose file to init graph (1 -> 25, 2 -> 7)");
+                    int c = scanner.nextInt();
+                    try {
+                        if (c == 1) {
+                            graph.setWeights("src/straightLine.txt");
+                            graph.displayWeights();
+                        } else if (c == 2) {
+                            //       C  4   D
+                            //   3     1      1
+                            // A     1   E        B
+                            //    2    3    6    2
+                            //      F         G
+                            graph.setWeights("src/seven.txt");graph.displayWeights();
+                        }
+                        else System.out.println("1 and 2 only");
+                    } catch (IOException e) {
+                        System.out.println(e.getMessage());
+                    }
                 }
-
                 case 0 -> System.out.println("Exiting...");
                 default -> System.out.println("Invalid choice. Please try again.");
             }
