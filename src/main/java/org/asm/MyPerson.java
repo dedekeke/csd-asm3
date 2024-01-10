@@ -86,13 +86,13 @@ public class MyPerson {
     }
 
     public void initSamplePersonList() {
-        // 4
-        // / \
-        // 3 5
-        // / \
-        // 2 6
-        // / \
-        // 1 7
+        //       4
+        //      / \
+        //     3   5
+        //    /     \
+        //   2       6
+        //  /         \
+        // 1           7
         Person[] persons = {
                 new Person("4", "John Wick", "Black hole", "0209"),
                 new Person("3", "Alice", "Wonderland", "0503"),
@@ -103,13 +103,13 @@ public class MyPerson {
                 new Person("7", "Grace", "Valhalla", "0408")
         };
 
-        // 4
-        // /
-        // 3
-        // /
-        // 2
-        // /
-        // 1
+        //        4
+        //       /
+        //      3
+        //     /
+        //    2
+        //   /
+        //  1
         // Person[] persons = {
         // new Person("4", "John Wick", "Black hole", "0209"),
         // new Person("3", "Alice", "Wonderland", "0503"),

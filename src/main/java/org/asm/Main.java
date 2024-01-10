@@ -81,7 +81,6 @@ public class Main {
                     }
                 }
                 case 8 -> {
-                    System.out.println("ABCDEFG");
                     System.out.println("Starting point :");
                     int startingPoint = scanner.nextInt();
                     System.out.println("Endpoint :");
@@ -108,7 +107,8 @@ public class Main {
                             // A     1   E        B
                             //    2    3    6    2
                             //      F         G
-                            graph.setWeights("src/seven.txt");graph.displayWeights();
+                            graph.setWeights("src/seven.txt");
+                            graph.displayWeights();
                         }
                         else System.out.println("1 and 2 only");
                     } catch (IOException e) {

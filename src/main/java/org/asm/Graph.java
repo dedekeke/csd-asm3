@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.StringTokenizer;
 
-// TO-DO fix this
 public class Graph {
     static int INF = 9999;
     // the matrix presenting data of this graph
@@ -15,7 +14,6 @@ public class Graph {
     char[] b;
     // current
     String passed = "";
-    String shortestPath;
     String s1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     Graph() {
@@ -92,26 +90,10 @@ public class Graph {
         return min_index;
     }
 
-//    void dijkstra(boolean[] selected, int[] dist, int[] path, int p, int q,
-//            boolean[] stopDisplay) {
-//        if (dist[q] == INF) {
-//            System.out.println("No path from " + b[p] + " to " + b[q]);
-//            return;
-//        }
-//        System.out.print("Path: " + b[q]);
-//        int u = q;
-//        while (u != p) {
-//            u = path[u];
-//            System.out.print(" <- " + b[u]);
-//        }
-//        System.out.println();
-//    }
-
     public void dijkstra(int start, int end) {
         boolean[] selected = new boolean[n];
         int[] dist = new int[n];
         int[] path = new int[n];
-        shortestPath = "";
 
         for (int i = 0; i < n; i++) {
             selected[i] = false;
@@ -176,7 +158,7 @@ public class Graph {
 
                 for (int i = 0; i < n; i++) {
                     // check if there exists an edge between current and node i
-                    if (a[current][i] != INF && !visited[i]) {
+                    if (a[current][i] != 0 && !visited[i]) {
                         stack.push(i);
                     }
                 }
