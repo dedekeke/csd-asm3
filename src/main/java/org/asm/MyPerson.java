@@ -34,9 +34,13 @@ public class MyPerson {
             return;
         }
 
-        Person person = new Person(id, name, birthplace, dob);
-        tree.insert(person);
-        System.out.println("New person added;");
+        Person person = Person.addPerson(id, name, birthplace, dob);
+        if (person != null) {
+            tree.insert(person);
+            System.out.println("New person added;");
+        } else {
+            System.out.println("Person ID is already existed");
+        }
     }
 
     private String getInputString(Scanner scanner, String fieldName) {
@@ -94,13 +98,13 @@ public class MyPerson {
         //  /         \
         // 1           7
         Person[] persons = {
-                new Person("4", "John Wick", "Black hole", "0209"),
-                new Person("3", "Alice", "Wonderland", "0503"),
-                new Person("2", "Bob", "Atlantis", "1221"),
-                new Person("1", "Charlie", "Olympus", "0101"),
-                new Person("5", "Eva", "Gotham", "1122"),
-                new Person("6", "Frank", "Rivendell", "0714"),
-                new Person("7", "Grace", "Valhalla", "0408")
+                Person.addPerson("4", "John Wick", "Black hole", "0209"),
+                Person.addPerson("3", "Alice", "Wonderland", "0503"),
+                Person.addPerson("2", "Bob", "Atlantis", "1221"),
+                Person.addPerson("1", "Charlie", "Olympus", "0101"),
+                Person.addPerson("5", "Eva", "Gotham", "1122"),
+                Person.addPerson("6", "Frank", "Rivendell", "0714"),
+                Person.addPerson("7", "Grace", "Valhalla", "0408")
         };
 
         //        4
@@ -111,10 +115,10 @@ public class MyPerson {
         //   /
         //  1
         // Person[] persons = {
-        // new Person("4", "John Wick", "Black hole", "0209"),
-        // new Person("3", "Alice", "Wonderland", "0503"),
-        // new Person("2", "Bob", "Atlantis", "1221"),
-        // new Person("1", "Charlie", "Olympus", "0101")
+        // Person.addPerson("4", "John Wick", "Black hole", "0209"),
+        // Person.addPerson("3", "Alice", "Wonderland", "0503"),
+        // Person.addPerson("2", "Bob", "Atlantis", "1221"),
+        // Person.addPerson("1", "Charlie", "Olympus", "0101")
         // };
         for (Person p : persons) {
             tree.insert(p);
