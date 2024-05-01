@@ -7,12 +7,6 @@ public record Person(String ID, String name, String birthplace, String dob) {
 
     private static final HashSet<String> existed = new HashSet<>();
 
-    public Person {
-        if (ID == null || ID.isEmpty() || !existed.add(ID)) {
-            throw new IllegalArgumentException("Invalid ID");
-        }
-    }
-
     public static Person addPerson(String ID, String name, String birthplace, String dob) {
         if (!existed.contains(ID)) {
             existed.add(ID);
